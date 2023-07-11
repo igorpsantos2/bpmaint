@@ -64,6 +64,9 @@
                     <Column>
                         <Text text="{i18n>tableNameColumnRegion}" />
                     </Column>
+                       <Column>
+                        <Text text="{i18n>tableNameColumnCountry}" />
+                    </Column>
                     </columns>
                 <items>
                     <ColumnListItem
@@ -75,11 +78,9 @@
                                 title="{PartnerId}"/>
 
                             <Text text="{PartnerName2} {PartnerName1}" />
-
                             <Text text="{path: 'PartnerType', formatter: '.formatter.formatPartnerType'}" />
-
                             <Text text="{Region}" />
-
+                            <Text text="{Country}" />
                             <!--ObjectNumber /-->
                         </cells>
                     </ColumnListItem>

@@ -7,7 +7,7 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("bpmaint.controller.Object", {
-
+cou
         formatter: formatter,
 
         /* =========================================================== */
@@ -24,10 +24,12 @@ sap.ui.define([
             // between the busy indication for loading the view's meta data
             var oViewModel = new JSONModel({
                     busy : true,
-                    delay : 0
+                    delay : 0,
+                    edit: false
                 });
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
+            this.carregaTipo();
         },
         /* =========================================================== */
         /* event handlers                                              */
@@ -48,6 +50,29 @@ sap.ui.define([
             } else {
                 this.getRouter().navTo("worklist", {}, true);
             }
+        },
+        onEditPress: function(){
+
+            this._changeEditStatus()
+
+        },
+
+
+
+
+        onSavePress: function(){
+
+            alert("teste botão salvar");
+
+        },
+
+
+
+
+        onCancelPress: function(){
+
+            alert("teste botão cancelar")
+
         },
 
         /* =========================================================== */
@@ -109,6 +134,31 @@ sap.ui.define([
                     oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
                 oViewModel.setProperty("/shareSendEmailMessage",
                     oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
+        },
+        carregaTipo: function () {
+            let cbTipo = this.byId("cbTipo");
+
+ 
+
+            cbTipo.addItem(new sap.ui.core.Item({
+                key: 1,
+                text: this.getResourceBundle().getText("txtOrganization")
+            }));
+
+ 
+
+            cbTipo.addItem(new sap.ui.core.Item({
+                key: 2,
+                text: this.getResourceBundle().getText("txtPerson")
+            }));
+        },
+        _changeEditStatus: function () {
+            let oViewModel = this.getModel("objectView");
+            let bEdit = oViewModel.getProperty("/edit");
+
+ 
+
+            oViewModel.setProperty("/edit", !bEdit);
         }
     });
 
