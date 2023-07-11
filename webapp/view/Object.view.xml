@@ -172,12 +172,11 @@
 
                         </form:FormElement>
 
-                        <form:FormElement label="{i18n>txtCountry}">
+                        <form:FormElement label="{i18n>txtny}">
 
                             <form:fields>
-
-                                <Input id="txtCountry" value="{Country}" editable="{objectView>/edit}" showValueHelp="true" suggestionItems="{/CountrySet}">
-                                <!--Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/-->
+                            <Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/>
+                                <!--Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/>
                                 
                                     <suggestionItems>
 
@@ -185,7 +184,7 @@
 
                                     </suggestionItems>
 
-                                </Input>
+                                </Input-->
 
                             </form:fields>
 
