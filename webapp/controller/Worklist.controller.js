@@ -114,6 +114,10 @@ sap.ui.define([
             oTable.getBinding("items").refresh();
         },
 
+        onCreatePress:function(){
+            this._getDialog().open();
+        },
+
         /* =========================================================== */
         /* internal methods                                            */
         /* =========================================================== */
@@ -142,7 +146,14 @@ sap.ui.define([
             if (aTableSearchState.length !== 0) {
                 oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
             }
-        }
+        },
+        _getDialog: function () {
+            if (!this._oDialog) {
+                this._oDialog = sap.ui.xmlfragment("bpmaint.view.fragment.New", this);
+                this.getView().addDependent(this._oDialog);
+            }
 
+             return this._oDialog;
+        },
     });
 });

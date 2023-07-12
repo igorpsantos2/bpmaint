@@ -39,6 +39,7 @@
                             text="{worklistView>/worklistTableTitle}"
                             level="H3"/>
                         <ToolbarSpacer />
+                        <Button id="buttonCreate" icon="sap-icon://add" text="{i18n>btnCreate}" type="Default" press="onCreatePress" />
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
