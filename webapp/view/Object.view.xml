@@ -175,7 +175,8 @@
                         <form:FormElement label="{i18n>txtny}">
 
                             <form:fields>
-                            <Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/>
+                            <!--Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/-->
+                            <Input id="txtCountry" value="{Country}" description="{CountryDetail/Landname}" editable="{objectView>/edit}" showValueHelp="true" valueHelpRequest="openCountryDialog"/>
                                 <!--Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/>
                                 
                                     <suggestionItems>
