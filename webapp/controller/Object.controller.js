@@ -193,7 +193,7 @@ sap.ui.define([
                 oInput.resetProperty("value"); oInput.resetProperty("description");
 
             }
-
+            
         },
 
         onCloseCountryDialog: function (oEvent) {
@@ -211,7 +211,7 @@ sap.ui.define([
                 oInput.resetProperty("value"); oInput.resetProperty("description");
 
             }
-
+            this._oCountryDialog.getBinding("items").filter("");
         },
 
         /* =========================================================== */
@@ -227,6 +227,7 @@ sap.ui.define([
         _onObjectMatched: function (oEvent) {
             var sObjectId = oEvent.getParameter("arguments").objectId;
             this._bindView("/BusinessPartnerSet" + sObjectId);
+            this.limpaCampos();
         },
 
         /**
@@ -243,7 +244,8 @@ sap.ui.define([
                 events: {
                     change: this._onBindingChange.bind(this),
                     dataRequested: function () {
-                        oViewModel.setProperty("/busy", true);
+                        oViewModel.setProperty("/busy", false);
+                        oViewModel.setProperty("/edit", false);
                     },
                     dataReceived: function () {
                         oViewModel.setProperty("/busy", false);
@@ -291,6 +293,37 @@ sap.ui.define([
                 text: this.getResourceBundle().getText("txtPerson")
             }));
         },
+        limpaCampos: function(){
+
+            this.byId("txtPartnerName1").setValue("");
+            
+            this.byId("txtPartnerName2").setValue("");
+            
+            this.byId("txtSearchTerm1").setValue("");
+            
+            this.byId("txtSearchTerm2").setValue("");
+            
+            this.byId("txtStreet").setValue("");
+            
+            this.byId("txtHouseNumber").setValue("");
+            
+            this.byId("txtDistrict").setValue("");
+            
+            this.byId("txtCity").setValue("");
+            
+            this.byId("txtRegion").setValue("");
+            
+            this.byId("txtZipCode").setValue("");
+            
+            this.byId("txtCountry").setValue("");
+            
+            
+            let oViewModel = this.getModel("objectView");
+            
+            oViewModel.setProperty("/edit", false);
+            
+            },
+
         _changeEditStatus: function () {
             let oViewModel = this.getModel("objectView");
             let bEdit = oViewModel.getProperty("/edit");
